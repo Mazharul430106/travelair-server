@@ -24,13 +24,22 @@ const client = new MongoClient(uri, {
 async function run() {
     try {
         const serviceCollcetions = client.db('travelAirlines').collection('travelServices');
-
-
+        const teamsCollcetions = client.db('travelAirlines').collection('teamsInfo');
+        // get service data from database.
         app.get('/services', async(req, res)=>{
             const query = {};
             const result = await serviceCollcetions.find(query).toArray();
             res.send(result);
         })
+
+        // geting teams data from database.
+
+        app.get('/teams', async(req, res)=>{
+            const query = {};
+            const result = await teamsCollcetions.find(query).toArray();
+            res.send(result);
+        })
+
 
 
 
