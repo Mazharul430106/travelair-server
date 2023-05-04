@@ -63,8 +63,12 @@ async function run() {
             res.send(result);
         })
         
-
-
+        // get coustomar reviews data from database
+        app.get('/reviews', async(req, res)=>{
+            const query = {};
+            const result = await reviewsCollections.find(query).toArray();
+            res.send(result);
+        })    
 
 
     } finally {
